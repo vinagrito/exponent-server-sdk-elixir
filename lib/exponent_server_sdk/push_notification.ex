@@ -30,21 +30,26 @@ defmodule ExponentServerSdk.PushNotification do
   def push(message) when is_map(message) do
     message
     |> PushMessage.create()
-
-    PushNotification.post!("send", message)
+    |> PushNotification.post!("send", message)
     |> Parser.parse()
   end
 
   @doc """
   Send the push notification request when using a list of message maps
   """
-  @spec push_list(list(PushMessage.t())) :: Parser.success() | Parser.error()
+  @spec push_list(list()) :: list(Parser.success()) | list(Parser.error())
   def push_list(messages) when is_list(messages) do
     messages
-    |> PushMessage.create_from_list()
+    |> PushMessage.create_from_list
+    |> push_messages_list
+  end
 
+  def push_messages_list([]), do: []
+
+  @spec push_messages_list(list(PushMessage.t())) :: list(Parser.success()) | list(Parser.error())
+  def push_messages_list(messages) do
     PushNotification.post!("send", messages)
-    |> Parser.parse_list()
+    |> Parser.parse_list
   end
 
   @doc """
@@ -52,9 +57,6 @@ defmodule ExponentServerSdk.PushNotification do
   """
   @spec get_receipts(list()) :: Parser.success() | Parser.error()
   def get_receipts(ids) when is_list(ids) do
-    ids
-    |> PushMessage.create_receipt_id_list()
-
     PushNotification.post!("getReceipts", %{ids: ids})
     |> Parser.parse()
   end
