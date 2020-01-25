@@ -1,10 +1,13 @@
 ExponentServerSdk
 ========
-[![Hex.pm](https://img.shields.io/hexpm/v/exponent_server_sdk.svg)](https://hex.pm/packages/exponent_server_sdk)
-[![Build Status](https://travis-ci.org/rdrop/exponent-server-sdk-elixir.svg?branch=master)](https://travis-ci.org/rdrop/exponent-server-sdk-elixir)
+<!-- [![Hex.pm](https://img.shields.io/hexpm/v/exponent_server_sdk.svg)](https://hex.pm/packages/exponent_server_sdk) -->
+<!-- [![Build Status](https://travis-ci.org/rdrop/exponent-server-sdk-elixir.svg?branch=master)](https://travis-ci.org/rdrop/exponent-server-sdk-elixir) -->
 [![Inline docs](https://inch-ci.org/github/rdrop/exponent-server-sdk-elixir.svg?branch=master)](https://inch-ci.org/github/rdrop/exponent-server-sdk-elixir)
 
 Use to send push notifications to Exponent Experiences from an Elixir/Phoenix server.
+
+**----> IMPORTANT: The 0.3.0 has bugs when attempting to send single push notifications. Use only the push_list/1 function.
+Also, you must take take of chunking your payloads to a max of 100 notifications. I'll be putting sometime on it later. At the moment this covers my needs.**
 
 ## Installation
 

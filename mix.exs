@@ -4,7 +4,7 @@ defmodule ExponentServerSdk.Mixfile do
   def project do
     [
       app: :exponent_server_sdk,
-      version: "0.2.0",
+      version: "0.3.0",
       elixir: "~> 1.9.4",
       name: "ExponentServerSdk",
       description: "Exponent Push Notification API library for Elixir",
