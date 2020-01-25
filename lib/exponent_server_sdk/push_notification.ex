@@ -46,10 +46,10 @@ defmodule ExponentServerSdk.PushNotification do
 
   def push_messages_list([]), do: []
 
-  @spec push_messages_list(list(list(PushMessage.t()))) :: list(Parser.success()) | list(Parser.error())
-  def push_messages_list([head | tail]) do
-    current_message = PushNotification.post!("send", head) |> Parser.parse_list()
-    [ current_message | push_messages_list(tail) ]
+  @spec push_messages_list(list(PushMessage.t())) :: list(Parser.success()) | list(Parser.error())
+  def push_messages_list(messages) do
+    PushNotification.post!("send", messages)
+    |> Parser.parse_list
   end
 
   @doc """
