@@ -157,7 +157,7 @@ defmodule ExponentServerSdk.PushMessage do
   def create_from_list(messages) when is_list(messages) do
     messages
     |> Enum.map(fn msg -> struct(PushMessage, msg) end)
-    |> Enum.chunk_every(100)
+    # |> Enum.chunk_every(100)
 
     # |> Enum.map(fn msg -> validate_push_token_from_message(struct(PushMessage, msg)) end)
     # |> Enum.reject(fn msg -> msg == nil end)
